@@ -29,5 +29,99 @@ Question 3
 
   The Big O is quadratic time O(n^2) because every new input results in n^2 runtime.
 
+Question 4
+  function doubleArrayValues(array) {
+      for (let i = 0; i < array.length; i++) {
+          array[i] *= 2;
+      }
+      return array;
+  }
 
+  The Big O is linear time O(n) because each additional input adds one more interation of the for loop
+
+Question 5 
+  function naiveSearch(array, item) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === item) {
+            return i;
+        }
+    }
+  }
+
+  The Big O is linear time O(n) because the for loop filters through each input looking for the item,
+  so the bigger the input, the longer the search can be, depending on the item's position in the array
+
+Question 6
+  function createPairs(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for(let j = i + 1; j < arr.length; j++) {
+            console.log(arr[i] + ", " +  arr[j] );
+        }
+    }
+  }
+
+  The Big O is polynomial/quadratic, O(n^2), because there are nested for loops and each additional input must run through both
+
+Question 7
+  function compute(num) {
+    let result = [];
+    for (let i = 1; i <= num; i++) {
+
+        if (i === 1) {
+            result.push(0);
+        }
+        else if (i == 2) {
+            result.push(1);
+        }
+        else {
+            result.push(result[i - 2] + result[i - 3]);
+        }
+    }
+    return result;
+  }
+    The Big O is linear, O(n), because there is one for loop
+
+Question 8
+  function efficientSearch(array, item) {
+    let minIndex = 0;
+    let maxIndex = array.length - 1;
+    let currentIndex;
+    let currentElement;
+
+    while (minIndex <= maxIndex) {
+        currentIndex = Math.floor((minIndex + maxIndex) / 2);
+        currentElement = array[currentIndex];
+
+        if (currentElement < item) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > item) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+    return -1;
+  }
+    The Big O is logarithmic O(log(n)), because each iteration through the loop cuts the available options in half
+    which means that additional inputs increase time complexity at a slower rate than linear
+
+Question 9
+  function findRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+  The Big O is constant, because the function picks one element at random to output, no matter how big the input is
+
+Question 10
+  function isWhat(n) {
+    if (n < 2 || n % 1 != 0) {
+        return false;
+    }
+    for (let i = 2; i < n; ++i) {
+        if (n % i == 0) return false;
+    }
+    return true;
+  }
+    The Big O is constant because the input doesn't increase the number of iterations of any loops
 
