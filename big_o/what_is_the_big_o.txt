@@ -125,3 +125,8 @@ Question 10
   }
     The Big O is linear because the higher the integer, the higher the number of potential iterations of the for loop
 
+
+
+
+
+
