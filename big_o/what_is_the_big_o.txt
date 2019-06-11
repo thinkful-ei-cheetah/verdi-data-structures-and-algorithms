@@ -123,5 +123,5 @@ Question 10
     }
     return true;
   }
-    The Big O is constant because the input doesn't increase the number of iterations of any loops
+    The Big O is linear because the higher the integer, the higher the number of potential iterations of the for loop
 
