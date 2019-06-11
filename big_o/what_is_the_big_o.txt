@@ -1,0 +1,33 @@
+Question 1
+  A. Big O is constant time O(1) b/c it doesn't how big the group is, everyone here's you speak and ask for a playmate - you're not asking each person individually.
+
+  B. Big O is linear time O(n) b/c the time it takes to find a playmate grows proportionally to the number of ppl in the room.
+
+Quetion 2
+  function isEven(value) {
+    if (value % 2 == 0) {
+        return true;
+    }
+    else
+        return false;
+    }
+  }
+
+  The Big O is constant time O(1) because the input size does not have an effect on the runtime performance.
+
+Question 3
+  function areYouHere(arr1, arr2) {
+    for (let i = 0; i < arr1.length; i++) {
+        const el1 = arr1[i];
+        for (let j = 0; j < arr2.length; j++) {
+            const el2 = arr2[j];
+            if (el1 === el2) return true;
+        }
+    }
+    return false;
+  }
+
+  The Big O is quadratic time O(n^2) because every new input results in n^2 runtime.
+
+
+
