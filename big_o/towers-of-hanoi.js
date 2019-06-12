@@ -1,42 +1,67 @@
 'use strict';
 
-function towersOfHanoi(discs) {
-  // break
-  // tower 3 has all disks and is sorted
-
-
-  // recursive
-  // disc moves to different tower if no smaller disc exist
-  // biggest disc cannot move if on tower 3
-
-  // tower 1 moves: 2 - 3
-  // tower 2 moves: 3 - 1
-  // tower 3 moves: 1 - 2
-
-  
-  // output: {towerOne: [1,2,3], towerTwo: [], towerThree: []}
-  // output: {towerOne: [2,3], towerTwo: [1], towerThree: []}
-  // output: {towerOne: [3], towerTwo: [1], towerThree: [2]}
-  // output: {towerOne: [3], towerTwo: [], towerThree: [1,2]}
-  // output: {towerOne: [1,3], towerTwo: [2], towerThree: []}
-  // output: {towerOne: [3], towerTwo: [1,2], towerThree: []}
-  // output: {towerOne: [], towerTwo: [1,2], towerThree: [3]}
-  // output: {towerOne: [], towerTwo: [1,2], towerThree: [1,3]}
-  // output: {towerOne: [2], towerTwo: [], towerThree: [1,3]}
-  // output: {towerOne: [1,2], towerTwo: [], towerThree: [3]}
-  // output: {towerOne: [2], towerTwo: [1], towerThree: [3]}
-  // output: {towerOne: [], towerTwo: [1], towerThree: [2,3]}
-  // output: {towerOne: [], towerTwo: [], towerThree: [1,2,3]}
-
-
+function isSorted(arr) {
+  const sorted = [...arr].sort();
+  for (let i=0; i<sorted.length; i++) {
+    if (arr[i] !== sorted[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
-// input: discs = integer (3,4,5)
-// output: {towerOne: [2,3], towerTwo: [], towerThree: [1]}
-// {towerOne: [3], towerTwo: [2], towerThree: [1]}
+function move(from, to) {
+  const disc = from.shift();
+  to.unshift(disc);
+}
 
-// no smaller integer can ever be before a larger
-// array must always be sorted asc
+function canMove(disc, to) {
+  return !to.length || disc < to[0];
+}
 
-// break case
-// length of third array is all the discs and it is sorted
+// function towersOfHanoi(discs, from, to, aux) {
+//   if (!towers.length) {
+//     towers = [[], [], []];
+//     for (let i=1; i<=discs; i++) {
+//       towers[0].push(i);
+//     }
+//     max = discs;
+//   }
+
+//   if (towers[2].length === discs && isSorted(towers[2])) {
+//     return towers;
+//   }
+
+  
+// }
+
+// you have to accept that you can move n-1 number of disks to a given peg via another peg.  If you can accept that, the problem allows for subtasks of this routine.
+
+function TOH(num, from, to, aux) {
+  if (num === 1) {
+    console.log(`moving disc 1 from ${from} to ${to}`);
+    return;
+  } else {
+    // A to B via C
+    TOH(num-1, from, aux, to);
+    console.log(`moving disc ${num} from ${from} to ${to}`);
+    // B to C via A
+    TOH(num-1, aux, to, from);
+  }
+}
+
+TOH(3, 'A', 'C', 'B');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
