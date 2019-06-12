@@ -9,6 +9,14 @@ function main(){
 
   // Add an item to the array
   arr.push(3);
+  arr.push(5);
+  arr.push(15);
+  arr.push(19);
+
+  // arr.pop()
+  // arr.pop()
+  // arr.pop()
+
 
   console.log(arr);
 }
