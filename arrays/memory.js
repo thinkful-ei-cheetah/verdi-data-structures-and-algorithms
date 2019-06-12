@@ -19,7 +19,7 @@ class Memory {
 
   free(ptr) {}
 
-  copy(toIdx, fromIdx, size) {
+  copy(toIdx, fromIdx, size) { //10,0,3
     if (fromIdx === toIdx) {
       return;
     }
