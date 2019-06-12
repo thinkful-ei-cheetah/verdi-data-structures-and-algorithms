@@ -109,20 +109,39 @@
 
 function remove(str, remover) {
   let result  ='';
-  let filterArr = []
+  let filterArr = [];
 
   for (let k = 0; k < remover.length; k++) {
-    filterArr.push(remover[k])
+    filterArr.push(remover[k]);
   }
 
   for (let i = 0; i < str.length; i++) {
     if (!filterArr.includes(str[i].toLowerCase())) {
-      result += str[i]
+      result += str[i];
     }
   }
-  return result
+  return result;
 }
 
-console.log(remove('Battle of the Vowels: Hawaii vs. Grozny', 'bvhg'))
+// console.log(remove('Battle of the Vowels: Hawaii vs. Grozny', 'bvhg'))
 
 // O(n)
+
+
+
+// Given an array of numbers, write an algorithm to find out the products of every other number except the number at each index.
+
+// Input:[1, 3, 9, 4]
+// Output:[108, 36, 12, 27]
+
+function products(arr) {
+  const maxProduct = arr.reduce((acc, val) => {
+    acc *= val;
+    return acc;
+  });
+  
+  return arr.map(num => maxProduct / num);
+}
+
+// console.log(products([1,3,9,4]));
+
