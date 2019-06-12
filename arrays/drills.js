@@ -66,35 +66,63 @@
 // Output:[1, 2, 3, 3, 5, 6, 8, 8, 9, 10, 11]
 
 
-//[1, 3, 6, 8, 11] - [2, 3, 5, 8, 9, 10]
-//             -                        -
-//[1,2,3,3,5,6,8,8,9,10]
+// [1, 3, 6, 8, 11] - [2, 3, 5, 100, 110]
+// 
+// [1,2,3,3,5,6,8,8,9,10]
 
-function merge(arr1, arr2) {
-  let ptr1 = 0;
-  let ptr2 = 0;
-  let result = [];
+// function merge(arr1, arr2) {
+//   let ptr1 = 0;
+//   let ptr2 = 0;
+//   let result = [];
 
-  while (arr1[ptr1] && arr2[ptr2]) {
-    if (arr1[ptr1] <= arr2[ptr2]) {
-      result.push(arr1[ptr1]);
-      ptr1++;
-    } else {
-      result.push(arr2[ptr2]);
-      ptr2++;
-    }
-  }
+//   while (arr1[ptr1] && arr2[ptr2]) {
+//     if (arr1[ptr1] <= arr2[ptr2]) {
+//       result.push(arr1[ptr1]);
+//       ptr1++;
+//     } else {
+//       result.push(arr2[ptr2]);
+//       ptr2++;
+//     }
+//   }
 
-  if (arr1[ptr1]) {
-    result = result.concat(arr1.slice(ptr1));
-  } else if (arr2[ptr2]) {
-    result = result.concat(arr2.slice(ptr2));
-  }
+//   if (arr1[ptr1]) {
+//     result = result.concat(arr1.slice(ptr1));
+//   } else if (arr2[ptr2]) {
+//     result = result.concat(arr2.slice(ptr2));
+//   }
 
-  return result;
-}
+//   return result;
+// }
 // const arr1 = [1, 3, 6, 8, 11];
 // const arr2 = [2, 3, 5, 8, 9, 10];
 // console.log(merge(arr1, arr2));
 
 // Big is Loglinear time O(nLogn)
+
+
+// 9. remove characters 
+
+// Write an algorithm that deletes given characters from a string. For example, given a string of "Battle of the Vowels: Hawaii vs. Grozny" and the characters to be removed are "aeiou", the algorithm should transform the original string to "Bttl f th Vwls: Hw vs. Grzny". Do not use Javascript's filter, split, or join methods.
+
+// Input:'Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'
+// Output: 'Bttl f th Vwls: Hw vs. Grzny'
+
+function remove(str, remover) {
+  let result  ='';
+  let filterArr = []
+
+  for (let k = 0; k < remover.length; k++) {
+    filterArr.push(remover[k])
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    if (!filterArr.includes(str[i].toLowerCase())) {
+      result += str[i]
+    }
+  }
+  return result
+}
+
+console.log(remove('Battle of the Vowels: Hawaii vs. Grozny', 'bvhg'))
+
+// O(n)
