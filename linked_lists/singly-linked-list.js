@@ -1,7 +1,7 @@
 'use strict';
 
 class _Node {
-  constructor(value, next) {
+  constructor(value, next=null) {
     this.value = value;
     this.next = next;
   }
@@ -15,11 +15,21 @@ class SinglyLinked {
   insertFirst(value) {
     this.head = new _Node(value, this.head);
   }
+
+  insertLast(value) {
+    const node = new _Node(value);
+    let currentNode = this.head;
+    while (currentNode.next !== null) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = node;
+  }
 }
 
 const list = new SinglyLinked();
 list.insertFirst(5);
 list.insertFirst(10);
+list.insertLast(15);
 display(list);
 
 function display(list) {
