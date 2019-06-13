@@ -132,6 +132,7 @@ display(list);
 count(list)
 isEmpty(list);
 findPrevious(list, 15);
+findLast(list);
 
 function display(list) {
   let results = '';
@@ -187,4 +188,14 @@ function findPrevious(list, nodeVal) {
   }
   console.log(prevNode.value);
   return prevNode.value;
+}
+
+function findLast(list) {
+  let currNode = list.head;
+
+  while(currNode.next !== null) {
+    currNode = currNode.next;
+  }
+  console.log(currNode.value)
+  return currNode.value; 
 }
