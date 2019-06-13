@@ -142,6 +142,7 @@ function reverse(list) {
   // return prevNode;
 
   while(currNode.next !== null) {
+    console.log(`prev: ${prevNode}, curr: ${currNode.value}, next: ${nextNode.value}`);
     let temp = currNode.next;
     nextNode.next = currNode;
     currNode.next = prevNode;
@@ -149,6 +150,7 @@ function reverse(list) {
     currNode = temp;
   }
 
+  list.head = currNode;
   return list;
 }
 
@@ -178,4 +180,5 @@ list.insertFirst(5);
 list.insertLast(15);
 list.insertLast(20);
 display(list);
-// reverse(list);
+reverse(list);
+display(list);
