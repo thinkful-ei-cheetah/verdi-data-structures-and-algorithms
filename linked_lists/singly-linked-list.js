@@ -129,29 +129,35 @@ class SinglyLinked {
 }
 
 function reverse(list) {
-  // 5->15->20
-  // 5<-15<-20
-
-  //   5-15-20
-  // P C  N
-
   let prevNode = null;
   let currNode = list.head;
-  let nextNode = currNode.next;
+  let nextNode;
 
   // return prevNode;
 
-  while(currNode.next !== null) {
-    console.log(`prev: ${prevNode}, curr: ${currNode.value}, next: ${nextNode.value}`);
-    let temp = currNode.next;
-    nextNode.next = currNode;
+  while(currNode !== null) {
+    console.log(`prev: ${JSON.stringify(prevNode)} | curr: ${JSON.stringify(currNode)} | next: ${JSON.stringify(nextNode)}`);
+    nextNode = currNode.next;
     currNode.next = prevNode;
     prevNode = currNode;
-    currNode = temp;
+    currNode = nextNode;
   }
 
-  list.head = currNode;
-  return list;
+  return prevNode;
+}
+
+function myReverse(list) { 
+  let current = list.head;
+  let previous = null; 
+  let next;
+  while (current) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+  }
+
+  return previous;
 }
 
 // 4. Mystery Program
@@ -197,17 +203,19 @@ const list = new SinglyLinked();
 list.insertFirst(5);
 list.insertLast(15);
 list.insertLast(20);
-const cycleList = new SinglyLinked();
-const a = new _Node(5);
-const b = new _Node(10);
-a.next = b;
-const c = new _Node(15);
-b.next = c;
-c.next = a;
-cycleList.head = a;
+display(list);
+myReverse(list);
+console.log(list);
+// display(list);
+// const cycleList = new SinglyLinked();
+// const a = new _Node(5);
+// const b = new _Node(10);
+// a.next = b;
+// const c = new _Node(15);
+// b.next = c;
+// c.next = a;
+// cycleList.head = a;
 
-// display(cycleList);
-console.log(isCycle(cycleList));
-console.log(isCycle(list));
+
 
 
