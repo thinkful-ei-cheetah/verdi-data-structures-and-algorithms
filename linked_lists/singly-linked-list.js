@@ -88,18 +88,48 @@ class SinglyLinked {
     currNode.next = newNode;
     newNode.next = tail;
   }
+
+  insertAt(item, index) {
+    // 10
+    //   5->null = 10-> 5-> null
+    const newNode = new _Node(item);
+
+    let count = 0;
+    let prevNode = this.head;
+    let currNode = this.head;
+
+    while(currNode.next !== null && count !== index) {
+      prevNode = currNode;
+      currNode = currNode.next;
+      count++
+    }
+    if(count !== index) {
+      console.log('No value found at that index')
+      return;
+    };
+
+    if(this.head.next === null) {
+      this.head = newNode;
+      newNode.next = currNode;
+      return;
+    }
+    
+    prevNode.next = newNode;
+    newNode.next = currNode;
+  }
 }
 
 
 
 const list = new SinglyLinked();
 list.insertFirst(5);
-// list.insertLast(10);
-// list.insertLast(15);
+list.insertLast(15);
+list.insertLast(20);
 // list.remove(15);
 // list.find(10);
-list.insertBefore(12, 5);
-list.insertAfter(20, 5)
+// list.insertBefore(0, 5);
+// list.insertAfter(20, 5);
+list.insertAt(10, 3);
 display(list);
 
 function display(list) {
