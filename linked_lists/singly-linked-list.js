@@ -165,6 +165,10 @@ function reverse(list) {
 function display(list) {
   let results = '';
   let currentNode = list.head;
+  if (!currentNode) {
+    console.log('List is empty');
+    return;
+  }
   if (currentNode.next === null) {
     console.log(`${currentNode.value}->null`);
     return;
@@ -268,3 +272,31 @@ function thirdFromEnd(list) {
   console.log(currNode.value)
   return currNode;
 }
+
+function middleOfList(list) {
+  let currNode = list.head;
+  let size = 0;
+
+  if(!currNode) return null;
+  if(!currNode.next) {
+    console.log(currNode.value);
+    return currNode;
+  }
+
+  while(currNode.next !== null) {
+    currNode = currNode.next;
+    size++;
+  }
+
+  let midpoint = Math.floor(size / 2);
+  currNode = list.head;
+  size = 0;
+  while(size !== midpoint) {
+    currNode = currNode.next;
+    size++;
+  }
+  console.log(currNode.value);
+  return currNode;
+}
+
+middleOfList(list);
