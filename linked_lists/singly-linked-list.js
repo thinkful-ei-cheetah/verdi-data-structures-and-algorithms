@@ -124,8 +124,9 @@ list.insertFirst(5);
 list.insertLast(15);
 list.insertLast(20);
 display(list);
-reverse(list);
-display(list);
+// reverse(list);
+// display(list);
+thirdFromEnd(list);
 // list.remove(15);
 // list.find(10);
 // list.insertBefore(0, 5);
@@ -248,3 +249,22 @@ function WhatDoesThisProgramDo(lst) {
 // This function loops through a linked list and removes duplicates
 // Linear time complexity O(n)
 
+// 6. 3rd from the end
+// 5 -> 15 -> 20 -> 25 -> 30 -> 35
+
+function thirdFromEnd(list) {
+  let currNode = list.head;
+  if(!currNode) return null;
+
+  while(currNode.next && currNode.next.next && currNode.next.next.next !== null) {
+    currNode = currNode.next;
+  }
+
+  if(!currNode.next || !currNode.next.next) {
+    console.log('List is less than three items');
+    return;
+  }
+
+  console.log(currNode.value)
+  return currNode;
+}
