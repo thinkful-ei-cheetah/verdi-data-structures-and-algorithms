@@ -130,6 +130,8 @@ list.insertLast(20);
 // list.insertAt(10, 1);
 display(list);
 count(list)
+isEmpty(list);
+findPrevious(list, 15);
 
 function display(list) {
   let results = '';
@@ -161,4 +163,28 @@ function count(list) {
   }
   console.log(size)
   return size;
+}
+
+function isEmpty(list) {
+  console.log(list.head === null);
+  return list.head === null;
+}
+
+function findPrevious(list, nodeVal) {
+  // 5 -> 15 -> 20 -> null
+  //            15 => 5 
+  let currNode = list.head
+  let prevNode = list.head
+
+  while(currNode.next !== null && currNode.value !== nodeVal) {
+    prevNode = currNode;
+    currNode = currNode.next;
+  }
+
+  if(nodeVal !== currNode.value) {
+    console.log('Node value does not exist');
+    return;
+  }
+  console.log(prevNode.value);
+  return prevNode.value;
 }
