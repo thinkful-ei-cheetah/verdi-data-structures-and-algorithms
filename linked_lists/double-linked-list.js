@@ -27,7 +27,6 @@ class DLL {
     this.head = newNode;
     this.tail.prev = newNode;
     newNode.next = temp;
-    console.log(newNode.value);
     return newNode;
   }
 
@@ -68,15 +67,40 @@ class DLL {
     }
   }
 
+  find(value) {
+    let currNode = this.head;
+    // 1->null
+
+    if (!currNode.next && currNode.value === value) {
+      console.log(currNode);
+      return currNode;
+    }
+
+    while (currNode.next !== null) {
+      if (currNode.value === value) {
+        console.log(currNode);
+        return currNode;
+      }
+      currNode = currNode.next;
+    }
+
+    if (currNode.value === value) {
+      console.log(currNode);
+      return currNode;
+    }
+    
+    console.log('Value does not exist');
+  }
+
 }
 
 let list = new DLL();
-// list.insertFirst(2);
+list.insertFirst(2);
 list.insertFirst(1);
-// list.insertLast(3);
-// list.insertLast(3);
-// list.insertLast(4);
-list.remove(1);
-utility.display(list);
+list.insertLast(3);
+list.insertLast(3);
+list.insertLast(4);
+list.find(3);
+// utility.display(list);
 
 
