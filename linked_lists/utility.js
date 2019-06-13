@@ -21,7 +21,6 @@ function display(list) {
     currentNode = currentNode.next;
   }
   results += `${currentNode.value}->null`;
-  console.log(list);
   console.log(results);
 }
 

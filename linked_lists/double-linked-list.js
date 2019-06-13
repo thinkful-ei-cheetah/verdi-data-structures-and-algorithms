@@ -1,6 +1,6 @@
 'use strict';
 
-const utility = require('./utility')
+const utility = require('./utility');
 
 class _Node {
   constructor(value, next=null, prev=null) {
@@ -45,12 +45,38 @@ class DLL {
     return newNode;
   }
 
+  remove(value) {
+    // 1->2->3->3->4
+    // 1->null
+    let currNode = this.head;
+    if (!currNode.next) {
+      if (currNode.value === value) {
+        this.head = null;
+        this.tail = null;
+        return;
+      }
+    }
+
+    while (currNode.next !== null) {
+      if (currNode.value === value) {
+        let prevNode = currNode.prev;
+        let nextNode = currNode.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+      }
+      currNode = currNode.next;
+    }
+  }
+
 }
 
 let list = new DLL();
-list.insertFirst(2);
+// list.insertFirst(2);
 list.insertFirst(1);
-list.insertLast(3);
+// list.insertLast(3);
+// list.insertLast(3);
+// list.insertLast(4);
+list.remove(1);
 utility.display(list);
 
 
