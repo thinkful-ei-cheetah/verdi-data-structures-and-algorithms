@@ -24,12 +24,33 @@ class SinglyLinked {
     }
     currentNode.next = node;
   }
+
+  remove(item) { // 5 => 10 => 15  = 15
+    if(!this.head) return null 
+    if (this.head.value === item) {
+      this.head = this.head.next
+      return 
+    }
+    let currNode = this.head
+    let prevNode = this.head
+
+    while((currNode !== null) && (currNode.value !== item)) {
+      prevNode = currNode
+      currNode = currNode.next
+    }
+    if(currNode === null) {
+      console.log('Item not found')
+      return
+    }
+    prevNode.next = currNode.next
+  }
 }
 
 const list = new SinglyLinked();
 list.insertFirst(5);
-list.insertFirst(10);
+list.insertLast(10);
 list.insertLast(15);
+list.remove(15);
 display(list);
 
 function display(list) {
