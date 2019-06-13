@@ -44,6 +44,17 @@ class SinglyLinked {
     }
     prevNode.next = currNode.next
   }
+
+  find(item) {
+    let currNode = this.head
+    let result = ''
+
+    while((currNode.value !== item) && (currNode.next !== null) ) {
+      currNode = currNode.next
+    }
+    result = currNode.value !== item ? 'Item not found' : `Result: ${JSON.stringify(currNode)}`
+    console.log(result)
+  }
 }
 
 const list = new SinglyLinked();
@@ -51,6 +62,7 @@ list.insertFirst(5);
 list.insertLast(10);
 list.insertLast(15);
 list.remove(15);
+list.find(10)
 display(list);
 
 function display(list) {
