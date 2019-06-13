@@ -119,8 +119,6 @@ class SinglyLinked {
   }
 }
 
-
-
 const list = new SinglyLinked();
 list.insertFirst(5);
 list.insertLast(15);
@@ -129,8 +127,9 @@ list.insertLast(20);
 // list.find(10);
 // list.insertBefore(0, 5);
 // list.insertAfter(20, 5);
-list.insertAt(10, 3);
+// list.insertAt(10, 1);
 display(list);
+count(list)
 
 function display(list) {
   let results = '';
@@ -146,4 +145,20 @@ function display(list) {
   }
   results += `${currentNode.value}->null`;
   console.log(results);
+}
+
+function count(list) {
+  let size = 1
+  let currNode = list.head;
+  if(!currNode) return null;
+  if(currNode.next === null) {
+    return size;
+  }
+
+  while(currNode.next !== null) {
+    currNode = currNode.next;
+    size++
+  }
+  console.log(size)
+  return size;
 }
