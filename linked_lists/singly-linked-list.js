@@ -153,7 +153,7 @@ function reverse(list) {
   while(currNode.next !== null) {
     let temp = currNode.next;
     nextNode.next = currNode;
-    currNode.next = prevNode;
+    currNode.next = prevNode
     prevNode = currNode;
     currNode = temp;
   }
