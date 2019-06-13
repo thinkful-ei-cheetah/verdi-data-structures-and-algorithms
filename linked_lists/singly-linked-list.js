@@ -1,4 +1,13 @@
 'use strict';
+const {
+  display,
+  count,
+  isEmpty,
+  findPrevious,
+  findLast,
+  thirdFromEnd,
+  middleOfList,
+} = require('./utility');
 
 class _Node {
   constructor(value, next=null) {
@@ -119,25 +128,6 @@ class SinglyLinked {
   }
 }
 
-const list = new SinglyLinked();
-list.insertFirst(5);
-list.insertLast(15);
-list.insertLast(20);
-display(list);
-// reverse(list);
-// display(list);
-thirdFromEnd(list);
-// list.remove(15);
-// list.find(10);
-// list.insertBefore(0, 5);
-// list.insertAfter(20, 5);
-// list.insertAt(10, 1);
-
-// count(list)
-// isEmpty(list);
-// findPrevious(list, 15);
-// findLast(list);
-
 function reverse(list) {
   // 5->15->20
   // 5<-15<-20
@@ -154,82 +144,12 @@ function reverse(list) {
   while(currNode.next !== null) {
     let temp = currNode.next;
     nextNode.next = currNode;
-    currNode.next = prevNode
+    currNode.next = prevNode;
     prevNode = currNode;
     currNode = temp;
   }
 
   return list;
-}
-
-function display(list) {
-  let results = '';
-  let currentNode = list.head;
-  if (!currentNode) {
-    console.log('List is empty');
-    return;
-  }
-  if (currentNode.next === null) {
-    console.log(`${currentNode.value}->null`);
-    return;
-  }
-
-  while (currentNode.next !== null) {
-    results += `${currentNode.value}->`;
-    currentNode = currentNode.next;
-  }
-  results += `${currentNode.value}->null`;
-  console.log(results);
-}
-
-function count(list) {
-  let size = 1
-  let currNode = list.head;
-  if(!currNode) return null;
-  if(currNode.next === null) {
-    return size;
-  }
-
-  while(currNode.next !== null) {
-    currNode = currNode.next;
-    size++
-  }
-  console.log(size)
-  return size;
-}
-
-function isEmpty(list) {
-  console.log(list.head === null);
-  return list.head === null;
-}
-
-function findPrevious(list, nodeVal) {
-  // 5 -> 15 -> 20 -> null
-  //            15 => 5 
-  let currNode = list.head
-  let prevNode = list.head
-
-  while(currNode.next !== null && currNode.value !== nodeVal) {
-    prevNode = currNode;
-    currNode = currNode.next;
-  }
-
-  if(nodeVal !== currNode.value) {
-    console.log('Node value does not exist');
-    return;
-  }
-  console.log(prevNode.value);
-  return prevNode.value;
-}
-
-function findLast(list) {
-  let currNode = list.head;
-
-  while(currNode.next !== null) {
-    currNode = currNode.next;
-  }
-  console.log(currNode.value)
-  return currNode.value; 
 }
 
 // 4. Mystery Program
@@ -253,50 +173,9 @@ function WhatDoesThisProgramDo(lst) {
 // This function loops through a linked list and removes duplicates
 // Linear time complexity O(n)
 
-// 6. 3rd from the end
-// 5 -> 15 -> 20 -> 25 -> 30 -> 35
-
-function thirdFromEnd(list) {
-  let currNode = list.head;
-  if(!currNode) return null;
-
-  while(currNode.next && currNode.next.next && currNode.next.next.next !== null) {
-    currNode = currNode.next;
-  }
-
-  if(!currNode.next || !currNode.next.next) {
-    console.log('List is less than three items');
-    return;
-  }
-
-  console.log(currNode.value)
-  return currNode;
-}
-
-function middleOfList(list) {
-  let currNode = list.head;
-  let size = 0;
-
-  if(!currNode) return null;
-  if(!currNode.next) {
-    console.log(currNode.value);
-    return currNode;
-  }
-
-  while(currNode.next !== null) {
-    currNode = currNode.next;
-    size++;
-  }
-
-  let midpoint = Math.floor(size / 2);
-  currNode = list.head;
-  size = 0;
-  while(size !== midpoint) {
-    currNode = currNode.next;
-    size++;
-  }
-  console.log(currNode.value);
-  return currNode;
-}
-
-middleOfList(list);
+const list = new SinglyLinked();
+list.insertFirst(5);
+list.insertLast(15);
+list.insertLast(20);
+display(list);
+// reverse(list);
