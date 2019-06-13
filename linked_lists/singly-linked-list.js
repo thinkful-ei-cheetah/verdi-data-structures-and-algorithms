@@ -90,16 +90,44 @@ class SinglyLinked {
   }
 }
 
+function insertInSortedOrder(list, value) {
+  const newNode = new _Node(value);
+  let currNode = list.head;
+  let prevNode = list.head;
+
+  if (list.head.next === null) {
+    if (list.head.value > value) {
+      let temp = list.head;
+      list.head = newNode;
+      newNode.next = temp;
+      return;
+    } else {
+      list.head.next = newNode;
+      return;
+    }
+  }
+
+  while(currNode.next !== null && currNode.value < value) {
+    prevNode = currNode;
+    currNode = currNode.next;
+  }
+
+  prevNode.next = newNode;
+  newNode.next = currNode;
+}
+
+
 
 
 const list = new SinglyLinked();
 list.insertFirst(5);
-// list.insertLast(10);
-// list.insertLast(15);
+list.insertLast(10);
+list.insertLast(15);
 // list.remove(15);
 // list.find(10);
-list.insertBefore(12, 5);
-list.insertAfter(20, 5)
+// list.insertBefore(12, 5);
+// list.insertAfter(20, 5)
+insertInSortedOrder(list, 12);
 display(list);
 
 function display(list) {
