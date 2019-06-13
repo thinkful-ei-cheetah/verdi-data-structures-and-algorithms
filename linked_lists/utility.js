@@ -12,11 +12,16 @@ function display(list) {
     return;
   }
 
+  if (list.tail) {
+    console.log(`head: ${list.head.value} head.next: ${list.head.next.value} | tail: ${list.tail.value} tail.prev: ${list.tail.prev.value}`);
+  }
+
   while (currentNode.next !== null) {
     results += `${currentNode.value}->`;
     currentNode = currentNode.next;
   }
   results += `${currentNode.value}->null`;
+  console.log(list);
   console.log(results);
 }
 
