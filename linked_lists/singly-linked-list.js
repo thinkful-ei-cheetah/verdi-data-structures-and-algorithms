@@ -75,9 +75,22 @@ class SinglyLinked {
     currNode.next = newNode;
     newNode.next = tail;
   }
+
+  insertAfter(item, nodeVal) {
+    const newNode = new _Node(item);
+    let currNode = this.head;
+    
+    while(currNode.next !== null && currNode.value !== nodeVal) {
+      currNode = currNode.next;
+    }
+  
+    const tail = currNode.next;
+    currNode.next = newNode;
+    newNode.next = tail;
+  }
 }
 
-// Implement a function called insertBefore() in the class that inserts a new node before a given node containing a key.
+
 
 const list = new SinglyLinked();
 list.insertFirst(5);
@@ -86,6 +99,7 @@ list.insertFirst(5);
 // list.remove(15);
 // list.find(10);
 list.insertBefore(12, 5);
+list.insertAfter(20, 5)
 display(list);
 
 function display(list) {
