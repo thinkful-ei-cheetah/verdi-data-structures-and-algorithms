@@ -175,10 +175,39 @@ function WhatDoesThisProgramDo(lst) {
 // This function loops through a linked list and removes duplicates
 // Linear time complexity O(n)
 
+function isCycle(list) {
+  // 5->15->20
+  // T
+  // H
+  let tortoise = list.head;
+  let hare = list.head;
+
+  while(hare && hare.next) {
+    tortoise = tortoise.next;
+    hare = hare.next.next;
+    if (tortoise === hare) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 const list = new SinglyLinked();
 list.insertFirst(5);
 list.insertLast(15);
 list.insertLast(20);
-display(list);
-reverse(list);
-display(list);
+const cycleList = new SinglyLinked();
+const a = new _Node(5);
+const b = new _Node(10);
+a.next = b;
+const c = new _Node(15);
+b.next = c;
+c.next = a;
+cycleList.head = a;
+
+// display(cycleList);
+console.log(isCycle(cycleList));
+console.log(isCycle(list));
+
+
