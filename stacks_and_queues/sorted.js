@@ -1,39 +1,38 @@
 'use strict';
 
 const Stack = require('./stack');
+const utils = require('./stack-utils');
 const stack = new Stack();
 stack.push(6);
 stack.push(1);
 stack.push(3);
 stack.push(18);
+stack.push(4);
+stack.push(499);
 
 //stack 1
-//18-3-1-6 //1-6
+//6-1-3-18-4-499
 
-//popped value 18
-//peaked 3
+//temp
 
-//stack 2
-//3
+//tempStack
+//
 
 
-function sorted(unsorted) {
+function sort(unsorted) {
   const tempStack = new Stack();
 
-  // poppped value from unsorted || tempStack
-  // peek value from unsorted
-  // peek value from tempStack
-
-  
-  let temp1;
-  let temp2;
-  while () {
-    let temp1 = unsorted.pop();
-    temp2 = unsorted.pop();
-
-    if (temp1.value < temp2.value) {
-      tempStack.push()
+  let temp;
+  while (unsorted.top !== null) {
+    temp = unsorted.pop();
+    while (tempStack.top !== null && tempStack.top.value > temp) {
+      unsorted.push(tempStack.pop());
     }
+    tempStack.push(temp);
   }
-
+  return tempStack;
 }
+
+utils.display(stack);
+const sorted = sort(stack);
+utils.display(sorted);

@@ -1,7 +1,5 @@
 'use strict';
 
-//create a stack class that has push and pop
-
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -32,22 +30,4 @@ const starTrek = new Stack();
 starTrek.push('spock');
 starTrek.push('bob');
 starTrek.push('jim');
-
-function peek(stack){
-  return stack.top.value;
-}
-
-function isEmpty(stack){
-  return (stack.top===null);
-}
-
-function display(stack) {
-  if (isEmpty(stack)) return;
-  let tempTop = stack.top;
-  while (tempTop !== null) {
-    console.log(tempTop.value);
-    tempTop = tempTop.next;
-  }
-}
-
 
