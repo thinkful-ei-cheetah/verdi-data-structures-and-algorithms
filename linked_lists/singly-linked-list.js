@@ -129,35 +129,18 @@ class SinglyLinked {
 }
 
 function reverse(list) {
-  let prevNode = null;
+  let reversed = null;
   let currNode = list.head;
   let nextNode;
 
-  // return prevNode;
-
   while(currNode !== null) {
-    console.log(`prev: ${JSON.stringify(prevNode)} | curr: ${JSON.stringify(currNode)} | next: ${JSON.stringify(nextNode)}`);
     nextNode = currNode.next;
-    currNode.next = prevNode;
-    prevNode = currNode;
+    currNode.next = reversed;
+    reversed = currNode;
     currNode = nextNode;
   }
-
-  return prevNode;
-}
-
-function myReverse(list) { 
-  let current = list.head;
-  let previous = null; 
-  let next;
-  while (current) {
-    next = current.next;
-    current.next = previous;
-    previous = current;
-    current = next;
-  }
-
-  return previous;
+  list.head = reversed;
+  return list;
 }
 
 // 4. Mystery Program
@@ -204,9 +187,9 @@ list.insertFirst(5);
 list.insertLast(15);
 list.insertLast(20);
 display(list);
-myReverse(list);
-console.log(list);
-// display(list);
+reverse(list);
+// console.log(list);
+display(list);
 // const cycleList = new SinglyLinked();
 // const a = new _Node(5);
 // const b = new _Node(10);

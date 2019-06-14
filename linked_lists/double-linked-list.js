@@ -92,15 +92,29 @@ class DLL {
     console.log('Value does not exist');
   }
 
+  reverse() {
+    const temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let currNode = this.head;
+    
+    while(currNode !== null) {
+      let prev = currNode.next;
+      let next = currNode.prev;
+      currNode.next = next;
+      currNode.prev = prev;
+      currNode = next;
+    }
+  }
 }
 
 let list = new DLL();
 list.insertFirst(2);
 list.insertFirst(1);
 list.insertLast(3);
-list.insertLast(3);
 list.insertLast(4);
-list.find(3);
-// utility.display(list);
+utility.display(list);
+list.reverse();
+utility.display(list);
 
 
