@@ -25,30 +25,28 @@ class Stack {
   }
 }
 
+module.exports = Stack;
+
 const starTrek = new Stack();
 starTrek.push('spock');
 starTrek.push('bob');
 starTrek.push('jim');
-// console.log(JSON.stringify(starTrek));
 
 function peek(stack){
-    return stack.top.value;
- }
+  return stack.top.value;
+}
 
- function isEmpty(stack){
-    return (stack.top===null);
- }
+function isEmpty(stack){
+  return (stack.top===null);
+}
 
- function display(stack) {
-    if (isEmpty(stack))
-        return;
-    let tempTop = stack.top;
-   while (tempTop !== null)
-   {
-        console.log(tempTop.value);
-        tempTop = tempTop.next;
-   }
- }
+function display(stack) {
+  if (isEmpty(stack)) return;
+  let tempTop = stack.top;
+  while (tempTop !== null) {
+    console.log(tempTop.value);
+    tempTop = tempTop.next;
+  }
+}
 
- display(starTrek);
 
