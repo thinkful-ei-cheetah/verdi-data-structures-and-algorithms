@@ -1,0 +1,47 @@
+1 =============================================================================
+Have you hashed all the items you were asked to?
+  - Yes, though some were overwritten
+
+What are the values of Maiar and Hobbit that you have? Is there a 
+discrepancy? Explain your answer.
+  - Sauron and Frodo.
+  - Since Maiar and Hobbit were not unique keys, they were 
+    overwritten
+
+What is the capacity of your hash table after you have hashed all the above 
+items? Explain your answer.
+  - 24
+  - because we exceeded the max load ration, we resized by the size ration
+    once to a new capacity of 24 (8*3)
+2 =============================================================================
+Expected answer = 20, 10
+
+3 =============================================================================
+capacity 11 - open addressing
+10, 22, 31, 4, 15, 28, 17, 88, 59
+[partner's code]
+
+capacity 9
+ 5, 28, 19, 15, 20, 33, 12, 17, 10
+[ 0,  1,  2,  3,  4,  5,  6,  7,  8]
+[ -, 28, 20, 12,  -,  -, 15,  -, 17]
+     19                  33
+     10
+
+Collisions:
+  - 19 % 9 === 1, but 28 already exists there so placed second position 
+    in linked list at index 1
+  - 33 % 9 === 6, but 15 already exists there so placed second position 
+    in linked list at index 6
+  - 10 % 9 === 1, but 28 and 19 already exists there so placed third position 
+    in linked list at index 1
+
+4 =============================================================================
+
+5 =============================================================================
+
+6 =============================================================================
+
+7 =============================================================================
+
+8 =============================================================================
