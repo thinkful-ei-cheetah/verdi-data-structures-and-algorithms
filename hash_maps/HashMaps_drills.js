@@ -43,5 +43,60 @@ function WhatDoesThisDo(){
   console.log(map2.get(str3));
 }
 
-main()
-WhatDoesThisDo()
+function removeDups(str){
+  let output = ''
+  const charMap = new Map()
+  for(let i = 0; i < str.length; i++){
+    if(!charMap.has(str[i])){
+      output += str[i]
+      charMap.set(str[i], i)
+    }
+  }
+  return output
+}
+
+function palindrome(str){
+  const charMap = new Map()
+  let repeatChar = 0
+  for(let i = 0; i < str.length; i++){
+    if(charMap.has(str[i])){
+      charMap.delete(str[i])
+      repeatChar++
+    }
+    else{
+      charMap.set(str[i], i)
+    }
+  }
+  console.log(repeatChar, str.length)
+  if(repeatChar*2 === str.length || (repeatChar*2 + 1) === str.length){
+    return true
+  }
+  return false
+}
+
+let input = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']
+
+function normalize(word){
+  let chars = word.split('')
+  return chars.sort().join('')
+}
+
+function anagrams(arr){
+  let anaMap = new Map()
+  arr.forEach(word => {
+    let normalizeWord = normalize(word)
+    if(anaMap.has(normalizeWord)){
+      let values = anaMap.get(normalizeWord)
+      values.push(word)
+    } else{
+      anaMap.set(normalizeWord, [word])
+    }
+  })
+  return [...anaMap.values()]
+}
+
+// main()
+// WhatDoesThisDo()
+// console.log(removeDups('google'))
+// console.log(palindrome('solsos'))
+console.log(anagrams(input))

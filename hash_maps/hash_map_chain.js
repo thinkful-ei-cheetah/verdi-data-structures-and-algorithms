@@ -1,4 +1,5 @@
 'use strict';
+const LinkedList = require('./linked-list')
 
 class HashMap {
   constructor(initialCapacity=8){
@@ -24,9 +25,13 @@ class HashMap {
     // Find the slot where this key should be in
     const index = this._findSlot(key)
     // open address implementation?
-    if(!this._hashTable[index])[
+    if(!this._hashTable[index]){
       this.length++
-    ]
+    }
+    else if(this._hashTable[index]){
+      this.length++
+      const list =
+    }
     this._hashTable[index] = {
       key,
       value,
