@@ -1,31 +1,32 @@
 'use strict';
 
 class BST {
-  constructor(key=null, value=null, parent=null) {
+  constructor(key=null, value=null, parent=null, count=0) {
     this.key = key;
     this.value = value;
     this.parent = parent;
     this.left = null;
     this.right = null;
-    this.count = 0;
+    this.count = count;
   }
 
   insert(key) {
     if (this.key === null) {
       this.key = key;
+      this.count++;
     } else if (key > this.key) { // go right
       if (this.right === null) {
-        this.right = new BST(key, null, this);
+        this.right = new BST(key, null, this, 1);
       } else {
         this.right.insert(key);
       }
     } else if (key < this.key) { // go left
       if (this.left === null) {
-        this.left = new BST(key, null, this);
+        this.left = new BST(key, null, this, 1);
       } else {
         this.left.insert(key);
       }
-    } else {
+    } else if (key === this.key) {
       // tied value
       this.count++;
     }
@@ -99,14 +100,15 @@ class BST {
   }
 }
 // 3,1,4,6,9,2,5,7
-const tree = new BST();
-tree.insert(3);
-tree.insert(1);
-tree.insert(4);
-tree.insert(6);
-tree.insert(9);
-tree.insert(2);
-tree.insert(5);
-tree.insert(7);
+// const tree = new BST();
+// tree.insert(3);
+// tree.insert(1);
+// tree.insert(4);
+// tree.insert(6);
+// tree.insert(9);
+// tree.insert(2);
+// tree.insert(5);
+// tree.insert(7);
+
 
 module.exports = BST;
