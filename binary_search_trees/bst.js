@@ -55,6 +55,18 @@ class BST {
     }
   }
 
+  find(key) {
+    if (key === this.key) {
+      return this;
+    } else if (key > this.key && this.right) {
+      return this.right.find(key);
+    } else if (key < this.key && this.left) {
+      return this.left.find(key);
+    } else {
+      return ('key not found');
+    }
+  }
+
   _replaceWith(node) {
     if (this.parent) {
       if (this.parent.right === this) {
@@ -89,16 +101,12 @@ class BST {
 // 3,1,4,6,9,2,5,7
 const tree = new BST();
 tree.insert(3);
-tree.insert(2);
-tree.insert(5);
+tree.insert(1);
 tree.insert(4);
 tree.insert(6);
-tree.remove(3);
-// tree.insert(9);
-// tree.insert(2);
-// tree.insert(5);
-// tree.insert(7);
-
-console.log(tree);
+tree.insert(9);
+tree.insert(2);
+tree.insert(5);
+tree.insert(7);
 
 module.exports = BST;
