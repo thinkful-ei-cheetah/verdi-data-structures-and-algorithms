@@ -28,6 +28,10 @@ class SinglyLinked {
   insertLast(value) {
     const node = new _Node(value);
     let currentNode = this.head;
+    if (!currentNode) {
+      this.head = node;
+      return;
+    }
     while (currentNode.next !== null) {
       currentNode = currentNode.next;
     }
@@ -54,6 +58,26 @@ class SinglyLinked {
     prevNode.next = currNode.next;
   }
 
+  removeObj(item) {
+    if(!this.head) return null;
+    if (this.head.value.key === item) {
+      this.head = this.head.next;
+      return; 
+    }
+    let currNode = this.head;
+    let prevNode = this.head;
+
+    while((currNode !== null) && (currNode.value.key !== item)) {
+      prevNode = currNode;
+      currNode = currNode.next;
+    }
+    if(currNode === null) {
+      console.log('Item not found');
+      return;
+    }
+    prevNode.next = currNode.next;
+  }
+
   find(item) {
     let currNode = this.head;
     let result = '';
@@ -63,6 +87,7 @@ class SinglyLinked {
     }
     result = currNode.value !== item ? 'Item not found' : `Result: ${JSON.stringify(currNode)}`;
     console.log(result);
+    return result;
   }
 
   insertBefore(item, nodeVal) {
@@ -110,12 +135,12 @@ class SinglyLinked {
     while(currNode.next !== null && count !== index) {
       prevNode = currNode;
       currNode = currNode.next;
-      count++
+      count++;
     }
     if(count !== index) {
-      console.log('No value found at that index')
+      console.log('No value found at that index');
       return;
-    };
+    }
 
     if(this.head.next === null) {
       this.head = newNode;
@@ -127,6 +152,8 @@ class SinglyLinked {
     newNode.next = currNode;
   }
 }
+
+module.exports = SinglyLinked;
 
 function reverse(list) {
   let reversed = null;
@@ -182,22 +209,14 @@ function isCycle(list) {
   return false;
 }
 
-const list = new SinglyLinked();
-list.insertFirst(5);
-list.insertLast(15);
-list.insertLast(20);
-display(list);
-reverse(list);
+// const list = new SinglyLinked();
+// list.insertFirst(5);
+// list.insertLast(15);
+// list.insertLast(20);
+// display(list);
+// reverse(list);
 // console.log(list);
-display(list);
-// const cycleList = new SinglyLinked();
-// const a = new _Node(5);
-// const b = new _Node(10);
-// a.next = b;
-// const c = new _Node(15);
-// b.next = c;
-// c.next = a;
-// cycleList.head = a;
+// display(list);
 
 
 

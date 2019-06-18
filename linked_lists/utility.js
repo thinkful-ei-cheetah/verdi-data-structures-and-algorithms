@@ -24,6 +24,26 @@ function display(list) {
   console.log(results);
 }
 
+function display2(list) {
+  let results = '';
+  let currentNode = list.head;
+  if (!currentNode) {
+    console.log('List is empty');
+    return;
+  }
+  if (currentNode.next === null) {
+    console.log(`${currentNode.value.value}->null`);
+    return;
+  }
+
+  while (currentNode.next !== null) {
+    results += `${currentNode.value.value}->`;
+    currentNode = currentNode.next;
+  }
+  results += `${currentNode.value.value}->null`;
+  console.log(results);
+}
+
 function count(list) {
   let size = 1;
   let currNode = list.head;
@@ -122,5 +142,6 @@ module.exports = {
   count,
   display,
   thirdFromEnd,
-  middleOfList
+  middleOfList,
+  display2
 };
