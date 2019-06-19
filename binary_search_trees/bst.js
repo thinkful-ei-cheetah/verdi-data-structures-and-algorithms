@@ -1,4 +1,5 @@
 'use strict';
+const Queue = require('../stacks_and_queues/queue');
 
 class BST {
   constructor(key=null, value=null, parent=null, count=0) {
@@ -98,17 +99,88 @@ class BST {
     }
     return this.left._findMin();
   }
-}
-// 3,1,4,6,9,2,5,7
-// const tree = new BST();
-// tree.insert(3);
-// tree.insert(1);
-// tree.insert(4);
-// tree.insert(6);
-// tree.insert(9);
-// tree.insert(2);
-// tree.insert(5);
-// tree.insert(7);
 
+  inOrder(result=[]) {
+    if (!this.left && !this.right) {
+      return result.push(this.key);
+    }
+    if (this.left) {
+      this.left.inOrder(result);
+    }
+    result.push(this.key);
+    if (this.right) {
+      this.right.inOrder(result);
+    }
+    return result;
+  }
+
+  preOrder(result=[]) {
+    if (!this.left && !this.right) {
+      return result.push(this.key);
+    }
+    result.push(this.key);
+    if (this.left) {
+      this.left.preOrder(result);
+    }
+    if (this.right) {
+      this.right.preOrder(result);
+    }
+    return result;
+  }
+
+  postOrder(result=[]) {
+    if (!this.left && !this.right) {
+      return result.push(this.key);
+    }
+    
+    if (this.left) {
+      this.left.postOrder(result);
+    }
+    if (this.right) {
+      this.right.postOrder(result);
+    }
+    result.push(this.key);
+    return result;
+  }
+
+  bfs(result=[]) {
+    const queue = new Queue();
+    queue.enqueue(this);
+    let node;
+    
+    while (queue.length) {
+      node = queue.dequeue();
+      result.push(node.key);
+
+      if (node.left) {
+        queue.enqueue(node.left);
+      }
+      
+      if (node.right) {
+        queue.enqueue(node.right);
+      }
+    }
+
+    return result;
+  }
+
+  
+}
+// const data = [25, 15, 50, 10, 24, 35, 70, 4, 12, 18, 31, 44, 66, 90, 22];
+const data = [15,20,25,16,10,12,8];
+const tree = new BST();
+data.forEach(num => tree.insert(num));
+
+// bfs
+// [ 15, 10, 20, 8, 12, 16, 25 ] 
+
+// pre order
+// 25, 15, 10, 4, 12, 24, 18, 22, 50, 35, 31, 44, 70, 66, 90
+
+// in order
+// 4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90
+
+// post order
+// 4, 12, 10, 22, 18, 24, 15, 31, 44, 35, 66, 90, 70, 50, 25
 
 module.exports = BST;
