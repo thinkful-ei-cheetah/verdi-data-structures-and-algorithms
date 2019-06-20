@@ -38,3 +38,9 @@ function mergeSort(arr) {
 }
 
 console.log(mergeSort([10,5,8,2,7]));
+
+
+module.exports = {
+  mergeSort,
+  merge,
+};
