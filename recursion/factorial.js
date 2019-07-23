@@ -19,3 +19,9 @@ console.log(factorial(5));
 console.log(factorial(1));
 console.log(factorial(0));
 console.log(factorial(6));
+
+// 5 * fac(4) -> 5 * 24 = 120
+// 4 * fac(3) -> 4 * 6 = 24
+// 3 * fac(2) -> 3 * 2 = 6
+// 2 * fac(1) -> 2 * 1 = 2
+// return 1

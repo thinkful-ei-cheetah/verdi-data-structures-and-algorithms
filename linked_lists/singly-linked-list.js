@@ -175,16 +175,16 @@ function WhatDoesThisProgramDo(lst) {
   // 5 -> 10 -> 10 -> 15
   let current = lst.head;
   while (current !== null) {
-      let newNode = current;
-      while (newNode.next !== null) {
-          if (newNode.next.value === current.value) {
-              newNode.next = newNode.next.next;
-          }
-          else {
-              newNode = newNode.next;
-          }
+    let newNode = current;
+    while (newNode.next !== null) {
+      if (newNode.next.value === current.value) {
+        newNode.next = newNode.next.next;
       }
-      current = current.next;
+      else {
+        newNode = newNode.next;
+      }
+    }
+    current = current.next;
   }
 }
 
